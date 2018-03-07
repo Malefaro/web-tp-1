@@ -1,9 +1,31 @@
+body {
+	padding-top: 80px;
+}
+
 .avatar {
 	height: 50px;
 	padding-left: 35px;
-	padding-top: 0px
+	padding-top: 0px;
 }
 
 .like {
 	width:20px;
+
+}
+
+.logo {
+	height: 35px;
+}
+
+.question {
+	padding-top:20px;
+	padding-bottom: 20px;
+	border: solid;
+	border-color: black;
+	border-width: 3px;
+	background: #DCDCDC;
+}
+
+.my-btn{
+	padding-left: 0px;
 }
