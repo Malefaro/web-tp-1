@@ -1,11 +1,10 @@
 body {
-	padding-top: 80px;
+	padding-top: 15px;
 }
 
 .avatar {
-	height: 50px;
-	padding-left: 35px;
-	padding-top: 0px;
+	width: 95%;
+	padding-left: 5%;
 }
 
 .like {
@@ -14,18 +13,56 @@ body {
 }
 
 .logo {
-	height: 35px;
+	width: 40px;
 }
 
 .question {
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	padding-top:20px;
 	padding-bottom: 20px;
 	border: solid;
 	border-color: black;
-	border-width: 3px;
-	background: #DCDCDC;
+	border-width: 1px;
+	/*border-radius: 10px;*/
+	background: #F2F2F2;/*#F2F2F2 #E3E3E3*/
+	overflow: hidden;
 }
 
 .my-btn{
 	padding-left: 0px;
+}
+
+.my-nav{
+	/*background-color: #E3E3E3;*/
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.question-text{
+	-webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+    height: 100%;
+}
+
+footer {
+	box-shadow: 0 0 10px rgba(0,0,0,0.5); 
+	background: #F2F2F2;
+}
+
+.attention {
+	color: red;
+}
+
+.answer {
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	padding-top:20px;
+	padding-bottom: 20px;
+	border: solid;
+	border-color: black;
+	border-width: 1px;
+	/*border-radius: 10px;*/
+	background: #FFFFFF;/*#F2F2F2 #E3E3E3*/
+	overflow: hidden;
+	margin-left: 10%;
+	margin-right:10%;
 }
