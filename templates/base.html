@@ -5,38 +5,57 @@
     <title>AskErr</title>
     <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+        <script src="../static/bootstrap/js/jquery.js"></script> 
+    <script src="../static/bootstrap/js/popper.js"></script> 
+    <script src="../static/bootstrap/js/bootstrap.js"></script>
 </head>
 
 <body>
 
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-
-  <img src="../static/img/logo2.png" class="navbar-brand" style="width: 45px">
-  <a class="navbar-brand" href="#">AskErr</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ASK</button>
-
-	<div class = "container">
-		<div class = "row justify-content-end">
-			<!-- <div class="col-md-2" >
-    			<img src="../static/img/logo1.jpg" class="img-circle" style="height:45px;">
-	    	</div> -->
-            <img src="../static/img/logo1.jpg" class="img-circle" style="height:45px;">
-	    	<div class = "col-md-3">
-	    		<div class ="row">
-	    		<a class="user" href="#">Username </a>
-	    		</div>
-	    		<div class ="row">
-	    		<a class="user" href="#">Settings &nbsp</a>
-	    		<a class="user" href="#">Logout</a>
-	    		</div>
-	    	</div>
-    	</div>
-    </div>
-  </div>
-</nav>
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Fixed navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Link </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          
+      <!-- <div class="col-md-2" >
+          <img src="../static/img/logo1.jpg" class="img-circle" style="height:45px;">
+        </div> -->
+          <div class="col-sm-1"></div>
+          <img src="../static/img/logo1.jpg" class="rounded-circle logo pull-right">
+          <div class = "col-md-3 align-self-end">
+            <div class ="row">
+            <a class="user" href="#">Username </a>
+            </div>
+            <div class ="row">
+            <a class="user" href="#">Settings &nbsp</a>
+            <a class="user" href="#">Logout</a>
+            </div>
+          </div>
+          
+          
+        
+        </div>
+      </nav>
+    </header>
 
 
 <div class="container">
@@ -46,13 +65,13 @@
         <div class="col-md-9 ">
             <h1 class="header">Questions</h1>
             <div class="question">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <img src="../static/img/user.png" class="img-circle avatar">
+                <div class="row justify-content-center">
+                    <div class="col-sm-2 align-self-center">
+                        <img src="../static/img/logo1.jpg" class="avatar">
                         <div><a class="name" href="#" style="padding-left: 28px">username</a> </div>
-                        <p style="padding-left: 35px;padding-top: 10px">
+                        <p style="padding-left: 40px;padding-top: 10px">
                         <button type="button" class="btn btn-secondary btn-sm">
-                            <img src="../static/img/like.png" class = 'img-circle like'>
+                            <img src="../static/img/like.png" class = 'like'>
                         </button>
                             6
                         </p>
@@ -67,7 +86,9 @@
                         asdlasldasldlaslda
                         dla
                         das
-                        dsaddasdadsdhhghghghggjjgjgjgjjgjgjgjgjgjgjgggggggggggggggggggggggjgjgjgjgjgjgjgjg
+                        dsaddasdadsdhhghghghggjjgjgjgjjgjgjgjgjg
+                        jgjggggggggggggggggggg
+                        ggggjgjgjgjgjgjgjgjg
                         asdasdasdasdadasdsadsadasdasdsadasd
                         <div>
                             <a href="#">Answers(3)</a>
@@ -83,11 +104,11 @@
             <div class="question">
                 <div class="row">
                     <div class="col-sm-2">
-                        <img src="../static/img/user.png" class="img-circle avatar">
+                        <img src="../static/img/user.png" class="rounded-circle avatar">
                         <div><a class="name" href="#" style="padding-left: 28px">username</a> </div>
                         <p style="padding-left: 35px;padding-top: 10px">
                         <button type="button" class="btn btn-secondary btn-sm">
-                            <img src="../static/img/like.png" class = 'img-circle like'>
+                            <img src="../static/img/like.png" class = ' like'>
                         </button>
                             6
                         </p>
@@ -109,11 +130,11 @@
             <div class="question">
                 <div class="row">
                     <div class="col-sm-2">
-                        <img src="../static/img/user.png" class="img-circle avatar">
+                        <img src="../static/img/user.png" class="rounded-circle avatar">
                         <div><a class="name" href="#" style="padding-left: 28px">username</a> </div>
                         <p style="padding-left: 35px;padding-top: 10px">
                         <button type="button" class="btn btn-secondary btn-sm">
-                            <img src="../static/img/like.png" class = 'img-circle like'>
+                            <img src="../static/img/like.png" class = ' like'>
                         </button>
                             6
                         </p>
