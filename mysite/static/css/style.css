@@ -20,6 +20,8 @@ body {
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	padding-top:20px;
 	padding-bottom: 20px;
+	padding-right: 20px;
+	padding-left: 20px;
 	border: solid;
 	border-color: black;
 	border-width: 1px;
@@ -66,4 +68,8 @@ footer {
 	overflow: hidden;
 	margin-left: 10%;
 	margin-right:10%;
+}
+
+.current-page{
+	font-size:25px;
 }

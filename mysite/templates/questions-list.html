@@ -1,0 +1,43 @@
+{% load static %}
+
+<h1>Question</h1>
+{% for question in questions %}
+
+
+            <div class="question">
+                <div class="row ">
+                    <div class="col-sm-2 ">
+                        <img src="{{ question.author.upload.url }}" class="avatar" >
+                        <div style="text-align: center;"><a class="name" href="#" >{{ question.author.username }}</a></div>
+                        <div style="text-align: center;">
+                        <button type="button" class="btn btn-secondary btn-sm">
+                            <img src="{% static 'img/like.png'%}" class = 'like'>
+                        </button>
+                            2
+                        </div>
+                    </div>
+                    <div class="col-sm-10 question-text">
+                        <div><a href="{% url 'question' id=question.id%}"><h5>{{ question.title }}</h5></a></div>
+                        <div>
+                            {{ question.text }}
+                        </div>
+                        <div>
+                            <br>
+                            {% if question.tags.all %}
+                            Tags:
+                            {% for tag in question.tags.all %}
+                                {{ tag }}
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br></br>
+
+
+
+{% endfor %}
+
+{% include 'paginator.html' %}

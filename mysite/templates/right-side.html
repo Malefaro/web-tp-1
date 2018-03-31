@@ -1,0 +1,15 @@
+
+    <h4>Popular tags</h4>
+    <ol class="list-unstyled ">
+    {% for tag in tags %}
+       <li><a class="Tag" href="#"> {{ tag.title }} </a></li>
+    {% endfor %}
+	</ol>
+    <div class="sidebar-module">
+        <h4>Best members</h4>
+        <ol class="list-unstyled ">
+            {% for user in users%}
+                    <li><a href="#">{{user.username}}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
