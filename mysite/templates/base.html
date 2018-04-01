@@ -17,15 +17,18 @@
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light my-nav">
-        <img src="{% static 'img/sitelogo.png' %}" class="navbar-brand logo">
+          <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'img/sitelogo.png' %}" class="navbar-brand logo"></a>
         <a class="navbar-brand" href="{% url 'home' %}">AskErr</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}"> Home <span class="sr-only">(current)</span></a>
+{#            <li class="nav-item active">#}
+{#              <a class="nav-link" href="{% url 'home' %}"> Home <span class="sr-only">(current)</span></a>#}
+{#            </li>#}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'hot' %}"> HotQuestions </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'ask-question' %}"> AskQuestion </a>

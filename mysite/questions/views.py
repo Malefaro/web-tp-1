@@ -32,6 +32,8 @@ def likequestion(request, id):
     ql = LikeQuestion(user=request.user, question=question_)
     ql.save()
     question_.likequestion_set.add(ql)
+    question_.likes = question_.likequestion_set.count()
+    question_.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 def likeanswer(request, id):
@@ -39,9 +41,13 @@ def likeanswer(request, id):
     likeset = answer_.likeanswer_set.all()
     for l in likeset:
         if (l.user == request.user):
+            answer_.likes = answer_.likeanswer_set.count()
+            answer_.save()
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     al = LikeAnswer(user=request.user, answer=answer_)
     al.save()
+    answer_.likes = answer_.likeanswer_set.count()
+    answer_.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 def question(request, id):
@@ -51,12 +57,19 @@ def question(request, id):
     users = User.objects.all()
     return render(request,'question.html', {'question': question_, 'tags':tags, 'users':users, 'answers':answers})
 
-def base(request):
-    q = Question.objects.new()
+def hot(request):
+    q = Question.objects.bylikes()
+    tags = randomQuerySet(Tag.objects.all(), 5)
+    users = User.objects.all()
+    questions = paginate(q, request)
+    return render(request, 'index.html',
+                  {'questions': questions, 'tags': tags, 'users': users, 'page_title': "Questions"})
+
+def base(request, sort = Question.objects.new()):
+    q = sort
     tags = randomQuerySet(Tag.objects.all(),5)
     users = User.objects.all()
     questions = paginate(q,request)
-
     return render(request,'index.html',{'questions':questions, 'tags':tags, 'users':users, 'page_title':"Questions"})
 
 def questions_on_tag(request,tag):

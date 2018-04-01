@@ -11,8 +11,8 @@ from django.contrib.auth.models import AbstractUser
 class QuestionManager(models.Manager):
     def new(self):
         return self.order_by('-create_date')
-    # def bylikes(self):
-    #     return self.order_by('-')
+    def bylikes(self):
+        return self.order_by('-likes')
 
 
 class User(AbstractUser):
@@ -35,6 +35,7 @@ class Question(models.Model):
     is_active = models.BooleanField(default=True, verbose_name=u"Доступность вопроса")
     tags = models.ManyToManyField(Tag, blank=True)
     objects = QuestionManager()
+    likes = models.IntegerField(default=0, verbose_name=u"Лайки")
     def __str__(self):
         return self.title
 
@@ -58,6 +59,10 @@ class Answer(models.Model):
     create_date = models.DateTimeField(default=datetime.now, verbose_name=u"Время ответа")
     id = models.IntegerField(unique=True, primary_key=True)
     is_correct = models.BooleanField(default=False, verbose_name=u'Корректность')
+    likes = models.IntegerField(default=0, verbose_name=u"Лайки")
+
+    def __str__(self):
+        return "Q: " + self.question.title + " User:" + self.user.username
 
     class Meta:
         ordering = ['-create_date']
