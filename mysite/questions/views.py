@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.views.generic import TemplateView
-from .models import Question, Tag, User, Answer
+from .models import Question, Tag, User, Answer, LikeQuestion, LikeAnswer
 from .otherfuncs import paginate
 from .otherfuncs import randomQuerySet
 from django.contrib.auth.decorators import login_required
@@ -23,7 +23,26 @@ def log_in(request):
             return render(request,'login.html')
     return render(request,'login.html')
 
+def likequestion(request, id):
+    question_ = Question.objects.get(id = id)
+    likeset = question_.likequestion_set.all()
+    for l in likeset:
+        if (l.user == request.user):
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    ql = LikeQuestion(user=request.user, question=question_)
+    ql.save()
+    question_.likequestion_set.add(ql)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
+def likeanswer(request, id):
+    answer_ = Answer.objects.get(id = id)
+    likeset = answer_.likeanswer_set.all()
+    for l in likeset:
+        if (l.user == request.user):
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    al = LikeAnswer(user=request.user, answer=answer_)
+    al.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 def question(request, id):
     question_ = get_object_or_404(Question,pk=id)
@@ -37,7 +56,8 @@ def base(request):
     tags = randomQuerySet(Tag.objects.all(),5)
     users = User.objects.all()
     questions = paginate(q,request)
-    return render(request,'index.html',{'questions':questions, 'tags':tags, 'users':users, 'page_title':"Questions" })
+
+    return render(request,'index.html',{'questions':questions, 'tags':tags, 'users':users, 'page_title':"Questions"})
 
 def questions_on_tag(request,tag):
     q_o_t = Question.objects.filter(tags__title = tag)

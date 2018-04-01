@@ -11,6 +11,8 @@ from django.contrib.auth.models import AbstractUser
 class QuestionManager(models.Manager):
     def new(self):
         return self.order_by('-create_date')
+    # def bylikes(self):
+    #     return self.order_by('-')
 
 
 class User(AbstractUser):
@@ -39,6 +41,16 @@ class Question(models.Model):
     class Meta:
         ordering = ['-create_date']
 
+class LikeQuestion(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=u"Пользователь")
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name=u'Вопрос')
+    # def like(self,request):
+    #     likeset = self.question.likequestion_set.all()
+    #     for l in likeset:
+    #         if (l.user == request.user):
+    #             return
+
+
 class Answer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=u"Пользователь")
     question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name=u'Вопрос')
@@ -49,3 +61,7 @@ class Answer(models.Model):
 
     class Meta:
         ordering = ['-create_date']
+
+class LikeAnswer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=u"Пользователь")
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, verbose_name=u'Вопрос')

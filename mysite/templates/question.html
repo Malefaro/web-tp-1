@@ -10,10 +10,10 @@
                         <img src="{{ question.author.upload.url }}" class="avatar" >
                         <div style="text-align: center;"><a class="name" href="#" >{{ question.author.username }}</a></div>
                         <div style="text-align: center;">
-                        <button type="button" class="btn btn-secondary btn-sm">
-                            <img src="{% static 'img/like.png' %}" class = 'like'>
-                        </button>
-                            6
+                        <a href="{% url 'like-question' id=question.id%}"><button type="button" class="btn btn-secondary btn-sm">
+                           <img src="{% static 'img/like.png'%}" class = 'like'>
+                         </button></a>
+                            {{ question.likequestion_set.count }}
                         </div>
                     </div>
                     <div class="col-sm-10 question-text">
@@ -45,10 +45,10 @@
                         <img src="{% static 'img/user.png' %}" class="avatar">
                         <div style="text-align: center;"><a class="name" href="#" >username</a> </div>
                         <div style="text-align: center;">
-                        <button type="button" class="btn btn-secondary btn-sm">
-                            <img src="{% static 'img/like.png' %}" class = ' like'>
-                        </button>
-                            6
+                        <a href="{% url 'like-answer' id=answer.id%}"><button type="button" class="btn btn-secondary btn-sm">
+                           <img src="{% static 'img/like.png'%}" class = 'like'>
+                         </button></a>
+                            {{ answer.likeanswer_set.count }}
                         </div>
                     </div>
                     <div class="col-sm-8">

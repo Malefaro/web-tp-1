@@ -15,5 +15,7 @@ urlpatterns = [
     path('ask/',views.ask_question, name='ask-question'),
     path('logout/',views.log_out, name='logout'),
     path('registration/',views.registration, name='registration'),
+    path('likeq/<int:id>/', views.likequestion, name = 'like-question'),
+    path('likea/<int:id>/',views.likeanswer, name='like-answer'),
     #url(r'^upload/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

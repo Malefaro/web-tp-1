@@ -1,5 +1,6 @@
 import random
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import User
 
 # def randomQuerySet(items, size):
 #     result = sorted(items, key=lambda x: random.random())
