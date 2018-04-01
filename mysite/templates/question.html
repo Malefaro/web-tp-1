@@ -8,7 +8,7 @@
                 <div class="row ">
                     <div class="col-sm-2 ">
                         <img src="{{ question.author.upload.url }}" class="avatar" >
-                        <div style="text-align: center;"><a class="name" href="#" >username</a></div>
+                        <div style="text-align: center;"><a class="name" href="#" >{{ question.author.username }}</a></div>
                         <div style="text-align: center;">
                         <button type="button" class="btn btn-secondary btn-sm">
                             <img src="{% static 'img/like.png' %}" class = 'like'>
@@ -25,14 +25,16 @@
                             <br>
                             {% if question.tags.all %}
                             Tags:
+
                             {% for tag in question.tags.all %}
-                                {{ tag }}
+                                <a class="{% cycle "badge badge-primary" "badge badge-success" "badge badge-info" "badge badge-warning" "badge badge-danger"%}" href="{% url 'questions-on-tag' tag %}"> {{ tag.title }} </a>
                             {% endfor %}
                             {% endif %}
-                    </div>
 
+                        </div>
+
+                    </div>
                 </div>
-            </div>
             </div>
             <hr/>
 
@@ -54,12 +56,12 @@
                         <div>
                             {{ answer.text }}
                         </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                Correct!
-                            </label>
-                        </div>
+{#                        <div class="form-check">#}
+{#                            <label class="form-check-label">#}
+{#                                <input class="form-check-input" type="checkbox" value="">#}
+{#                                Correct!#}
+{#                            </label>#}
+{#                        </div>#}
 
                     </div>
                 </div>

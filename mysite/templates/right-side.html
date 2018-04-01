@@ -2,7 +2,7 @@
     <h4>Popular tags</h4>
     <ol class="list-unstyled ">
     {% for tag in tags %}
-       <li><a class="Tag" href="#"> {{ tag.title }} </a></li>
+       <li><a class="{% cycle "badge badge-primary" "badge badge-success" "badge badge-info" "badge badge-warning" "badge badge-danger"%}" href="{% url 'questions-on-tag' tag %}"> {{ tag.title }} </a></li>
     {% endfor %}
 	</ol>
     <div class="sidebar-module">

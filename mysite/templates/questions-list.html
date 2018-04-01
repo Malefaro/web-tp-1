@@ -1,6 +1,6 @@
 {% load static %}
 
-<h1>Question</h1>
+<h1>{{ page_title }}</h1>
 {% for question in questions %}
 
 
@@ -23,10 +23,11 @@
                         </div>
                         <div>
                             <br>
+                            Answers: {{ question.answer_set.count }} <br>
                             {% if question.tags.all %}
                             Tags:
                             {% for tag in question.tags.all %}
-                                {{ tag }}
+                                <a class="{% cycle "badge badge-primary" "badge badge-success" "badge badge-info" "badge badge-warning" "badge badge-danger"%}" href="{% url 'questions-on-tag' tag %}"> {{ tag.title }} </a>
                             {% endfor %}
                             {% endif %}
                         </div>

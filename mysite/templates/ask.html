@@ -1,71 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>AskErr</title>
-    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
-    <link href="../static/css/askme.css" rel="stylesheet" type="text/css">
-    <script src="../static/bootstrap/js/jquery.js"></script> 
-    <script src="../static/bootstrap/js/popper.js"></script> 
-    <script src="../static/bootstrap/js/bootstrap.js"></script>
-</head>
-
-<body>
-
-    <header>
-      <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light my-nav">
-        <img src="../static/img/sitelogo.png" class="navbar-brand logo">
-        <a class="navbar-brand" href="#">AskErr</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"> Random-Question </a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li> -->
-          </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-          
-      <!-- <div class="col-md-2" >
-          <img src="../static/img/logo1.jpg" class="img-circle" style="height:45px;">
-        </div> -->
-          <div class="col-sm-1"></div>
-          <img src="../static/img/logo1.jpg" class="rounded-circle logo pull-right">
-          <div class = "col-md-3 align-self-end">
-            <div class ="row">
-            <a class="user" href="#">Username </a>
-            </div>
-            <div class ="row">
-            <a class="user" href="#">Settings &nbsp</a>
-            <a class="user" href="#">Logout</a>
-            </div>
-          </div>
-          
-          
-        
-        </div>
-      </nav>
-    </header>
-
-
-<div class="container">
-
-    <div class="row">
-
-        <div class="col-md-9 ">
-            <h1>New Question</h1>
+{% extends 'base.html' %}
+{% block left-side %}
+            <h1>{{ page_title }}</h1>
             <form class="forms" style="margin-top: 40px">
                 <div class="form-group row">
                     <a class="col-sm-1 col-form-label">Title</a>
@@ -91,44 +26,5 @@
             </form>
             <br></br>
 
-        </div>
 
-        <div class="col-md-3">
-            <div>
-                <h2>Popular tags</h2>
-                <ol class="list-unstyled ">
-                    <li><a class="Tag1" href="#">Tag1</a></li>
-                    <li><a class="Tag2" href="#">Tag2</a></li>
-                    <li><a class="Tag3" href="#">Tag3</a></li>
-
-                </ol>
-
-            </div>
-            <div class="sidebar-module">
-                <h2>Best members</h2>
-                <ol class="list-unstyled ">
-                    <li><a href="#">Username1</a></li>
-                    <li><a href="#">Username2</a></li>
-                    <li><a href="#">Username3</a></li>
-                    <li><a href="#">Username4</a></li>
-                    <li><a href="#">Username5</a></li>
-                    <li><a href="#">Username6</a></li>
-                    <li><a href="#">Username7</a></li>
-                    <li><a href="#">Username8</a></li>
-                    <li><a href="#">Username9</a></li>
-                    <li><a href="#">Username10</a></li>
-                </ol>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted" style="margin: auto;">All rights reserved 2018(not)</p>
-    </div>
-</footer>
-
-</body>
+{% endblock %}

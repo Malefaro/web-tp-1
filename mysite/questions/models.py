@@ -6,20 +6,7 @@ import os
 from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def paginate(objects_list, request):
-    paginator = Paginator(objects_list, 3)
-    page = request.GET.get('page')
-    try:
-        objects_page = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        objects_page = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        objects_page = paginator.page(paginator.num_pages)
-    return objects_page
 
 class QuestionManager(models.Manager):
     def new(self):

@@ -28,7 +28,7 @@
               <a class="nav-link" href="{% url 'home' %}"> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"> Random-Question </a>
+              <a class="nav-link" href="{% url 'ask-question' %}"> AskQuestion </a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link disabled" href="#">Disabled</a>
@@ -48,17 +48,17 @@
             </div>
             <div class ="row">
             <a class="user" href="#" style="padding-left:15px;padding-right: 10px">Settings</a>
-            <a class="user" href="#">Logout</a>
+            <a class="user" href="{% url 'logout' %}">Logout</a>
             </div>
           </div>
           {% else %}
             <div class="col-sm-1"></div>
             <div class = "col-md-3 align-self-end">
             <div class ="row">
-                <a class="user" href="#">log in</a>
+                <a class="user" href="{% url 'login' %}">log in</a>
             </div>
             <div class ="row">
-                <a class="user" href="#">registration</a>
+                <a class="user" href="{% url 'registration' %}">registration</a>
             </div>
           </div> {% endif %}
           
