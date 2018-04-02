@@ -45,6 +45,9 @@ class Question(models.Model):
 class LikeQuestion(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=u"Пользователь")
     question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name=u'Вопрос')
+
+    def __str__(self):
+        return self.user.username + " like Q: " + str(self.question)
     # def like(self,request):
     #     likeset = self.question.likequestion_set.all()
     #     for l in likeset:
@@ -70,3 +73,6 @@ class Answer(models.Model):
 class LikeAnswer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=u"Пользователь")
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, verbose_name=u'Вопрос')
+
+    def __str__(self):
+        return self.user.username + " like on " + str(self.answer)

@@ -28,6 +28,9 @@ def likequestion(request, id):
     likeset = question_.likequestion_set.all()
     for l in likeset:
         if (l.user == request.user):
+            l.delete()
+            question_.likes = question_.likequestion_set.count()
+            question_.save()
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     ql = LikeQuestion(user=request.user, question=question_)
     ql.save()
@@ -41,6 +44,7 @@ def likeanswer(request, id):
     likeset = answer_.likeanswer_set.all()
     for l in likeset:
         if (l.user == request.user):
+            l.delete()
             answer_.likes = answer_.likeanswer_set.count()
             answer_.save()
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
