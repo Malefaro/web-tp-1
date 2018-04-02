@@ -42,8 +42,8 @@
             <div class="answer">
                 <div class="row justify-content-center">
                     <div class="col-sm-2">
-                        <img src="{% static 'img/user.png' %}" class="avatar">
-                        <div style="text-align: center;"><a class="name" href="#" >username</a> </div>
+                        <img src="{{ answer.user.upload.url }}" class="avatar">
+                        <div style="text-align: center;"><a class="name" href="#" >{{ answer.user.username }}</a> </div>
                         <div style="text-align: center;">
                         <a href="{% url 'like-answer' id=answer.id%}"><button type="button" class="btn btn-secondary btn-sm">
                            <img src="{% static 'img/like.png'%}" class = 'like'>
