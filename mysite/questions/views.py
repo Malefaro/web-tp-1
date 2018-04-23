@@ -24,35 +24,51 @@ def log_in(request):
     return render(request,'login.html')
 
 def likequestion(request, id):
+    if (not request.user.is_authenticated):
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     question_ = Question.objects.get(id = id)
-    likeset = question_.likequestion_set.all()  #используй filter
-    for l in likeset:
-        if (l.user == request.user):
-            l.delete()
-            question_.likes = question_.likequestion_set.count()
-            question_.save()
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-    ql = LikeQuestion(user=request.user, question=question_)
-    ql.save()
-    question_.likequestion_set.add(ql)
-    question_.likes = question_.likequestion_set.count()
-    question_.save()
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    likeset = question_.likequestion_set.filter(user = request.user)  #используй filter
+    # for l in likeset:
+    #     if (l.user == request.user):
+    #         l.delete()
+    #         question_.likes = question_.likequestion_set.count()
+    #         question_.save()
+    #         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    if (likeset.count() > 0):
+        likeset.delete()
+        question_.likes = question_.likequestion_set.count()
+        question_.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    else:
+        ql = LikeQuestion(user=request.user, question=question_)
+        ql.save()
+        question_.likequestion_set.add(ql)
+        question_.likes = question_.likequestion_set.count()
+        question_.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 def likeanswer(request, id):
+    if (not request.user.is_authenticated):
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     answer_ = Answer.objects.get(id = id)
-    likeset = answer_.likeanswer_set.all() #тоже
-    for l in likeset:
-        if (l.user == request.user):
-            l.delete()
-            answer_.likes = answer_.likeanswer_set.count()
-            answer_.save()
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-    al = LikeAnswer(user=request.user, answer=answer_)
-    al.save()
-    answer_.likes = answer_.likeanswer_set.count()
-    answer_.save()
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    likeset = answer_.likeanswer_set.filter(user = request.user) #тоже
+    # for l in likeset:
+    #     if (l.user == request.user):
+    #         l.delete()
+    #         answer_.likes = answer_.likeanswer_set.count()
+    #         answer_.save()
+    #         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    if (likeset.count() > 0):
+        likeset.delete()
+        answer_.likes = answer_.likeanswer_set.count()
+        answer_.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    else:
+        al = LikeAnswer(user=request.user, answer=answer_)
+        al.save()
+        answer_.likes = answer_.likeanswer_set.count()
+        answer_.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 def question(request, id):
     question_ = get_object_or_404(Question,pk=id)
