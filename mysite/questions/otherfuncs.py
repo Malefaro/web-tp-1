@@ -6,7 +6,7 @@ from .models import User
 #     result = sorted(items, key=lambda x: random.random())
 #     return result[:size]
 
-def randomQuerySet(items, size):
+def randomQuerySet(items, size): # сделать ModelManager для Tag и кинуть туда
     result = []
     ls = []
     if (size > items.count()):

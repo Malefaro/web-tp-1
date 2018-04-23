@@ -27,7 +27,7 @@ class Tag(models.Model):
         return self.title
 
 class Question(models.Model):
-    id = models.IntegerField(unique=True, primary_key=True)
+    id = models.IntegerField(unique=True, primary_key=True) #убрать
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=u"Автор")
     title = models.CharField(max_length=120, verbose_name=u"Заголовок вопроса")
     text = models.TextField(verbose_name=u"Полное описание вопроса")

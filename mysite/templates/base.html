@@ -30,9 +30,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'hot' %}"> HotQuestions </a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'ask-question' %}"> AskQuestion </a>
             </li>
+            {% endif %}
             <!-- <li class="nav-item">
               <a class="nav-link disabled" href="#">Disabled</a>
             </li> -->
@@ -47,10 +49,10 @@
           <img src="{{  user.upload.url }}" class="rounded-circle logo pull-right">
           <div class = "col-md-3 align-self-end">
             <div class ="row">
-            <a class="user" href="#" style="padding-left: 15px">{{ user.username }} </a>
+            <a class="user" href="{% url 'settings' %}" style="padding-left: 15px">{{ user.username }} </a>
             </div>
             <div class ="row">
-            <a class="user" href="#" style="padding-left:15px;padding-right: 10px">Settings</a>
+            <a class="user" href="{% url 'settings' %}" style="padding-left:15px;padding-right: 10px">Settings</a>
             <a class="user" href="{% url 'logout' %}">Logout</a>
             </div>
           </div>

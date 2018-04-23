@@ -25,7 +25,7 @@ def log_in(request):
 
 def likequestion(request, id):
     question_ = Question.objects.get(id = id)
-    likeset = question_.likequestion_set.all()
+    likeset = question_.likequestion_set.all()  #используй filter
     for l in likeset:
         if (l.user == request.user):
             l.delete()
@@ -41,7 +41,7 @@ def likequestion(request, id):
 
 def likeanswer(request, id):
     answer_ = Answer.objects.get(id = id)
-    likeset = answer_.likeanswer_set.all()
+    likeset = answer_.likeanswer_set.all() #тоже
     for l in likeset:
         if (l.user == request.user):
             l.delete()
@@ -79,7 +79,7 @@ def base(request, sort = Question.objects.new()):
 def questions_on_tag(request,tag):
     q_o_t = Question.objects.filter(tags__title = tag)
     questions = paginate(q_o_t, request)
-    tags = randomQuerySet(Tag.objects.all(),5)
+    tags = randomQuerySet(Tag.objects.all(), 5)
     users = User.objects.all()
     return render(request, 'index.html',{'questions':questions,'tags':tags,'users':users, 'page_title':"On tag "+tag })
 
@@ -97,3 +97,8 @@ def registration(request):
     tags = randomQuerySet(Tag.objects.all(), 5)
     users = User.objects.all()
     return render(request, 'registration.html', {'tags':tags,'users':users, 'page_title':'Registration'})
+
+def settings(request):
+    tags = randomQuerySet(Tag.objects.all(), 5)
+    users = User.objects.all()
+    return render(request, 'settings.html', {'tags':tags, 'users': users,'user':request.user})

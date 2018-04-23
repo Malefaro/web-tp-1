@@ -19,5 +19,6 @@ urlpatterns = [
     path('registration/',views.registration, name='registration'),
     path('likeq/<int:id>/', views.likequestion, name = 'like-question'),
     path('likea/<int:id>/',views.likeanswer, name='like-answer'),
+    path('settings/',views.settings,name = 'settings')
     #url(r'^upload/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
