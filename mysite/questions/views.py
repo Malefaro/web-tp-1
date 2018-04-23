@@ -6,21 +6,30 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from .forms import *
 # Create your views here.
 
 def log_in(request):
     if (request.user.is_authenticated):
-        return HttpResponseRedirect('home')
-    if ( request.method == "POST" ):
-        usern = request.POST.get('LoginInput','')
-        passw = request.POST.get('inputPassword','')
-        user = auth.authenticate(username=usern, password = passw)
-        if (user is not None):
-            auth.login(request,user)
+        return HttpResponseRedirect(reverse('home'))
+    # if ( request.method == "POST" ):
+    #     usern = request.POST.get('LoginInput','')
+    #     passw = request.POST.get('inputPassword','')
+    #     user = auth.authenticate(username=usern, password = passw)
+    #     if (user is not None):
+    #         auth.login(request,user)
+    #         return HttpResponseRedirect(reverse('home'))
+    #     else:
+    #         return render(request,'login.html')
+    # return render(request,'login.html')
+    if (request.method == "POST"):
+        form = LoginForm(request.POST)
+        if (form.is_valid()):
+            auth.login(request, form.cleaned_data['user'])
             return HttpResponseRedirect(reverse('home'))
-        else:
-            return render(request,'login.html')
-    return render(request,'login.html')
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'tags': Tag.objects.randomQuerySet(5), 'form': form})
 
 def likequestion(request, id):
     if (not request.user.is_authenticated):
@@ -113,11 +122,23 @@ def log_out(request):
     return HttpResponseRedirect(reverse('home'))
 
 def registration(request):
-    tags = randomQuerySet(Tag.objects.all(), 5)
+    #tags = randomQuerySet(Tag.objects.all(), 5)
+    tags = Tag.objects.randomQuerySet(5)
     users = User.objects.all()
-    return render(request, 'registration.html', {'tags':tags,'users':users, 'page_title':'Registration'})
+    if (request.user.is_authenticated ):
+        return HttpResponseRedirect(reverse('home'))
+    if (request.method == "POST"):
+        form = SignupForm(request.POST, request.FILES)
+        if (form.is_valid() ):
+            user = form.save()
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = SignupForm()
+    return render(request, 'registration.html', {'tags':tags,'users':users, 'page_title':'Registration', 'form':form})
 
 def settings(request):
-    tags = randomQuerySet(Tag.objects.all(), 5)
+    #tags = randomQuerySet(Tag.objects.all(), 5)
+    tags = Tag.objects.randomQuerySet(5)
     users = User.objects.all()
     return render(request, 'settings.html', {'tags':tags, 'users': users,'user':request.user})
