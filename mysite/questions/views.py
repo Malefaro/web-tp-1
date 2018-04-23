@@ -137,8 +137,16 @@ def registration(request):
         form = SignupForm()
     return render(request, 'registration.html', {'tags':tags,'users':users, 'page_title':'Registration', 'form':form})
 
+@login_required
 def settings(request):
+    if (request.method == "POST"):
+        form = SettingsForm(request.POST, request.FILES)
+        if form.is_valid():
+            q = form.save()
+        return HttpResponseRedirect(reverse('settings'))
+    else:
+        form = SettingsForm()
     #tags = randomQuerySet(Tag.objects.all(), 5)
     tags = Tag.objects.randomQuerySet(5)
     users = User.objects.all()
-    return render(request, 'settings.html', {'tags':tags, 'users': users,'user':request.user})
+    return render(request, 'settings.html', {'tags':tags, 'users': users,'user':request.user, 'form':form})
