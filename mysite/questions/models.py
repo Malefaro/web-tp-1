@@ -6,6 +6,7 @@ import os
 from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+import random
 
 
 class QuestionManager(models.Manager):
@@ -13,6 +14,22 @@ class QuestionManager(models.Manager):
         return self.order_by('-create_date')
     def bylikes(self):
         return self.order_by('-likes')
+
+class TagManager(models.Manager):
+    def randomQuerySet(self, size):  # сделать ModelManager для Tag и кинуть туда
+        result = []
+        ls = []
+        items = Tag.objects.all()
+        if (size > items.count()):
+            return items
+        num = random.randrange(0, items.count())
+        for i in range(size):
+            while (num in ls):
+                num = random.randrange(0, items.count())
+            ls.append(num)
+        for i in range(size):
+            result.append(items[ls[i]])
+        return result
 
 
 class User(AbstractUser):
@@ -22,12 +39,13 @@ class User(AbstractUser):
 
 class Tag(models.Model):
     title = models.CharField(max_length=120, verbose_name=u"Заголовок ярлыка")
+    objects = TagManager()
 
     def __str__(self):
         return self.title
 
 class Question(models.Model):
-    id = models.IntegerField(unique=True, primary_key=True) #убрать
+    #id = models.IntegerField(unique=True, primary_key=True) #убрать
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=u"Автор")
     title = models.CharField(max_length=120, verbose_name=u"Заголовок вопроса")
     text = models.TextField(verbose_name=u"Полное описание вопроса")

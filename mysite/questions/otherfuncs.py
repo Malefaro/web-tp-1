@@ -6,19 +6,19 @@ from .models import User
 #     result = sorted(items, key=lambda x: random.random())
 #     return result[:size]
 
-def randomQuerySet(items, size): # сделать ModelManager для Tag и кинуть туда
-    result = []
-    ls = []
-    if (size > items.count()):
-        return items
-    num = random.randrange(0, items.count())
-    for i in range(size):
-        while (num in ls):
-            num = random.randrange(0, items.count())
-        ls.append(num)
-    for i in range(size):
-        result.append(items[ls[i]])
-    return result
+# def randomQuerySet(items, size): # сделать ModelManager для Tag и кинуть туда
+#     result = []
+#     ls = []
+#     if (size > items.count()):
+#         return items
+#     num = random.randrange(0, items.count())
+#     for i in range(size):
+#         while (num in ls):
+#             num = random.randrange(0, items.count())
+#         ls.append(num)
+#     for i in range(size):
+#         result.append(items[ls[i]])
+#     return result
 
 
 
