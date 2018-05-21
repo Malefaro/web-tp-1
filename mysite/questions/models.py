@@ -66,6 +66,9 @@ class LikeQuestion(models.Model):
 
     def __str__(self):
         return self.user.username + " like Q: " + str(self.question)
+
+    class Meta:
+        unique_together = (('user', 'question'), )
     # def like(self,request):
     #     likeset = self.question.likequestion_set.all()
     #     for l in likeset:
@@ -94,3 +97,6 @@ class LikeAnswer(models.Model):
 
     def __str__(self):
         return self.user.username + " like on " + str(self.answer)
+
+    class Meta:
+        unique_together = (('user','answer'), )

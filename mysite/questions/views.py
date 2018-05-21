@@ -3,10 +3,12 @@ from django.views.generic import TemplateView
 from .models import Question, Tag, User, Answer, LikeQuestion, LikeAnswer
 from .otherfuncs import paginate
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import *
+from django.http import JsonResponse
 # Create your views here.
 
 def log_in(request):
@@ -31,6 +33,7 @@ def log_in(request):
         form = LoginForm()
     return render(request, 'login.html', {'tags': Tag.objects.randomQuerySet(5), 'form': form})
 
+@require_POST
 def likequestion(request, id):
     if (not request.user.is_authenticated):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
@@ -54,7 +57,27 @@ def likequestion(request, id):
         question_.likes = question_.likequestion_set.count()
         question_.save()
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    # return JsonResponse({'status':'ok', 'likes': question_.likes}) # likes идут в my.js и с помощью data.likes получаем их
 
+    # try:
+    #     question_id = int(request.POST.get('question_id'))
+    # except ValueError:
+    #     return JsonResponse({'status':'error'})
+    # user = User.objects.first()
+    #
+    # try:
+    #     question = Question.objects.get(pk = question_id)
+    # except Question.DoesNotExist:
+    #     return JsonResponse({'status':'error'})
+    # like_qs = LikeQuestion.objects.filter(user = user, question= question)
+    # if (like_qs.exists()):
+    #     like_qs.delete()
+    #     question.likes -= 1
+    # else:
+    #     LikeQuestion.objects.create(user = user, question= question)
+    #     question.likes += 1
+
+@require_POST
 def likeanswer(request, id):
     if (not request.user.is_authenticated):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

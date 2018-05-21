@@ -161,10 +161,10 @@ class SettingsForm(forms.Form):
         except User.DoesNotExist:
             return username
 
-    def save(self):
+    def save(self, user):
         data = self.cleaned_data
         password = data.get('password')
-        u = User()
+        u = user
 
         u.username = data.get('username')
         u.email = data.get('email')
