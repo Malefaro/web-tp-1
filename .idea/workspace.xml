@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="135c82d1-c575-4712-97e3-0f65b1b67ae1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/db.sqlite3" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/web-tp-1.iml" afterPath="$PROJECT_DIR$/.idea/web-tp-1.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/questions/forms.py" afterPath="$PROJECT_DIR$/mysite/questions/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/questions/views.py" afterPath="$PROJECT_DIR$/mysite/questions/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/templates/ask.html" afterPath="$PROJECT_DIR$/mysite/templates/ask.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/templates/base.html" afterPath="$PROJECT_DIR$/mysite/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/templates/question.html" afterPath="$PROJECT_DIR$/mysite/templates/question.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/templates/settings.html" afterPath="$PROJECT_DIR$/mysite/templates/settings.html" />
-    </list>
+    <list default="true" id="135c82d1-c575-4712-97e3-0f65b1b67ae1" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/mysite/questions/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="335">
-              <caret line="114" column="9" lean-forward="true" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
+              <caret line="114" column="9" lean-forward="false" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -73,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/mysite/templates/settings.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
-              <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+              <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
               <folding>
                 <element signature="e#2102#2129#0#HTML" expanded="true" />
                 <marker date="1526905544886" expanded="false" signature="1131:1145" ph="..." />
@@ -717,7 +706,7 @@
     <entry file="file://$PROJECT_DIR$/mysite/templates/settings.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
           <folding>
             <element signature="e#2102#2129#0#HTML" expanded="true" />
             <marker date="1526905544886" expanded="false" signature="1131:1145" ph="..." />
@@ -729,7 +718,7 @@
     <entry file="file://$PROJECT_DIR$/mysite/questions/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
-          <caret line="114" column="9" lean-forward="true" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
+          <caret line="114" column="9" lean-forward="false" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
           <folding />
         </state>
       </provider>
