@@ -69,12 +69,23 @@
             {% endfor %}
 
             {% if user.is_authenticated %}
+{#            <div id="answerForm" class="basic" style="margin-top: 80px">#}
+{#                <div class="form-group">#}
+{#                    <label for="exampleTextarea">Your answer: </label>#}
+{#                    <textarea class="form-control" id="exampleTextarea" rows="7" placeholder="Enter your answer here..."></textarea>#}
+{#                </div>#}
+{#                <button class="btn btn-primary" type="submit" style="margin-bottom: 20px">Answer</button>#}
+{#            </div>#}
             <div id="answerForm" class="basic" style="margin-top: 80px">
-                <div class="form-group">
-                    <label for="exampleTextarea">Your answer: </label>
-                    <textarea class="form-control" id="exampleTextarea" rows="7" placeholder="Enter your answer here..."></textarea>
-                </div>
-                <button class="btn btn-primary" type="submit" style="margin-bottom: 20px">Answer</button>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for f in form.visible_fields %}
+                    <div class="form-group">
+                        {{ f }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">Answer</button>
+            </form>
             </div>
             {% endif %}
 

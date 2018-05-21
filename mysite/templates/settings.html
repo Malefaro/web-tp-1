@@ -2,30 +2,30 @@
 
 {% block left-side %}
             <h1>Settings</h1>
-            <form class="form-group" >
-
-                <div class="form-group row has-warning">
-                    <a class="col-sm-2 col-form-label">Email</a>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control"  name="EmailInput" placeholder="Enter your email">
-                    </div>
-                </div>
-                <div class="form-group row has-warning">
-                    <a class="col-sm-2 col-form-label">Nickname</a>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control"  name="NickInput" placeholder="Enter your nickname">
+{#            <form class="form-group" >#}
+{##}
+{#                <div class="form-group row has-warning">#}
+{#                    <a class="col-sm-2 col-form-label">Email</a>#}
+{#                    <div class="col-sm-10">#}
+{#                        <input type="email" class="form-control"  name="EmailInput" placeholder="Enter your email">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group row has-warning">#}
+{#                    <a class="col-sm-2 col-form-label">Nickname</a>#}
+{#                    <div class="col-sm-10">#}
+{#                        <input type="login" class="form-control"  name="NickInput" placeholder="Enter your nickname">#}
 {#                        <div class="attention">Nickname reserved</div>#}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <a class="col-sm-2 col-form-label">Upload avatar</a>
-                    <div class="col-sm-10">
-                        <img style="width: inherit" src="{{ user.upload.url }}" >
-                        <input style="margin-top: 20px" type="file" class="form-control-file" name="exampleInputFile" aria-describedby="fileHelp">
-                    </div>
-                </div>
-
-            </form>
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group row">#}
+{#                    <a class="col-sm-2 col-form-label">Upload avatar</a>#}
+{#                    <div class="col-sm-10">#}
+{#                        <img style="width: inherit" src="{{ user.upload.url }}" >#}
+{#                        <input style="margin-top: 20px" type="file" class="form-control-file" name="exampleInputFile" aria-describedby="fileHelp">#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#            </form>#}
 
             <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -44,8 +44,9 @@
 
             </div>
             {% endfor %}
-            </form>
             <div class="col-sm-10 offset-sm-2">
                 <button class="btn btn-primary" style="margin-bottom: 20px">Submit</button>
             </div>
+            </form>
+
 {% endblock %}

@@ -33,7 +33,7 @@ def log_in(request):
         form = LoginForm()
     return render(request, 'login.html', {'tags': Tag.objects.randomQuerySet(5), 'form': form})
 
-@require_POST
+#@require_POST
 def likequestion(request, id):
     if (not request.user.is_authenticated):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
@@ -77,7 +77,7 @@ def likequestion(request, id):
     #     LikeQuestion.objects.create(user = user, question= question)
     #     question.likes += 1
 
-@require_POST
+#@require_POST
 def likeanswer(request, id):
     if (not request.user.is_authenticated):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
@@ -106,7 +106,15 @@ def question(request, id):
     answers = question_.answer_set.all()
     tags = Tag.objects.randomQuerySet(5)
     users = User.objects.all()
-    return render(request,'question.html', {'question': question_, 'tags':tags, 'users':users, 'answers':answers})
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+
+        if form.is_valid():
+            answer = form.save(question_, request.user)
+            return HttpResponseRedirect(reverse('question', kwargs={'id': question_.id}))
+    else:
+        form = AnswerForm()
+    return render(request,'question.html', {'question': question_, 'tags':tags, 'users':users, 'answers':answers,'form':form})
 
 def hot(request):
     q = Question.objects.bylikes()
@@ -135,9 +143,16 @@ def questions_on_tag(request,tag):
 
 def ask_question(request):
     #tags = randomQuerySet(Tag.objects.all(), 5)
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            q = form.save(request.user, 0)
+            return HttpResponseRedirect(reverse('question', kwargs={'id': q.id}))
+    else:
+        form = QuestionForm()
     tags = Tag.objects.randomQuerySet(5)
     users = User.objects.all()
-    return render(request, 'ask.html', {'tags':tags,'users':users, 'page_title':'Ask Question'})
+    return render(request, 'ask.html', {'tags':tags,'users':users, 'page_title':'Ask Question', 'form':form})
 
 @login_required
 def log_out(request):
@@ -165,7 +180,7 @@ def settings(request):
     if (request.method == "POST"):
         form = SettingsForm(request.POST, request.FILES)
         if form.is_valid():
-            q = form.save()
+            q = form.save(request.user)
         return HttpResponseRedirect(reverse('settings'))
     else:
         form = SettingsForm()
